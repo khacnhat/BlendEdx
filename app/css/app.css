@@ -1,0 +1,83 @@
+/* app css stylesheet */
+ul, li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+/* Sidebar */
+.sidebar{
+    z-index: 11;
+    background: #242628;
+    border-left: 1px solid #131415;
+    width: 200px;
+    right: 0px;
+    top:60px;
+    bottom: 0;
+    position: absolute;
+}
+
+.sidebar-toggle{
+    display: block;
+    cursor: pointer;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    width: 60px;
+    height: 60px;
+    background-color: #FB5557;
+}
+
+.toggle-icon{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("../images/sidebar-toggler.png") no-repeat center;
+}
+
+.chat-search{
+    padding: 10px;
+}
+
+.chat-buddy{
+    border-bottom: 1px solid #2e3033;
+}
+
+.chat-buddy>a{
+    display: block;
+    padding: 14px 0 14px 10px;
+}
+
+.chat-buddy .status{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    right: 10px;
+    margin-top: 14px;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.chat-buddy .status.online{
+    background: #8bbf61;
+}
+
+.chat-buddy .status.away{
+    background: #ab7a4b;
+}
+
+.chat-buddy .avatar{
+    width: 40px;
+}
+
+.chat-buddy .buddy-name{
+    color: #efefef;
+}
+
+.chat-buddy small{
+    color: #bcc3c1;
+}
+

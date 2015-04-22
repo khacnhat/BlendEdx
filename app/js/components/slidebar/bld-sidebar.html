@@ -1,0 +1,27 @@
+<div>
+    <div ng-click="toggle()" class="sidebar-toggle">
+      <span class="toggle-icon"></span>
+    </div>
+    <div class="split-vertical">
+      <div class="chat-search">
+        <input type="text" placeholder="Search friends" class="form-control"/>
+      </div>
+      <ul class="chat-buddies">
+        <li class="chat-buddy" ng-repeat="buddy in buddies">
+          <a href="#">
+            <div class="media">
+              <div class="pull-left">
+                <span class="status {{buddy.status}}}"></span>
+                <img src="{{buddy.avatar}}" class="img-circle avatar" />
+              </div>
+              <div class="media-body">
+                <div class="buddy-name">{{buddy.name}}</div>
+                <small>{{buddy.slogan}}</small>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
+
