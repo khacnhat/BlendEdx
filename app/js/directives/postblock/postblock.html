@@ -1,0 +1,37 @@
+<div class="panel panel-green">
+  <div class="panel-heading">
+    <div class="media">
+      <div class="media-left">
+        <a href>
+          <img ng-src="{{feed.author.avatar}}"/>
+        </a>
+      </div>
+      <div class="media-body">
+        <div><a href>{{feed.author.name}}</a> to <a href>{{group.name}}</a></div>
+        <div><span>on {{feed.created}}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <p>{{feed.text}}</p>
+  </div>
+  <div class="comment-bar">
+    <i class="fa fa-comments"></i>
+    <a href ng-click="showComments()">{{feed.comments.length}} comments</a>
+  </div>
+  <ul class="comments">
+    <li ng-repeat="comment in feed.comments" class="media comment" ng-hide="!showAllComment && $index >= 3">
+      <div class="media-left">
+        <a href><img ng-src="{{comment.author.avatar}}"/></a>
+      </div>
+      <div class="media-body">
+        <a href class="pull-left">{{comment.author.name}}</a>
+        <span> {{comment.text}}</span>
+        <div>on {{comment.created}}</div>
+      </div>
+    </li>
+  </ul>
+  <div class="panel-footer">
+    <input type="text" class="form-control" ng-keypress="sendComment($event)" ng-model="comment.text"/>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="panel panel-green list-group">
+  <div class="panel-heading panel-heading-gray title">
+    <span>Group</span>
+    <a href class="fa fa-plus pull-right" ng-click="add()"></a>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="g in groups">
+        <div>
+          <span class="hex pull-left"></span>
+          <a href="#/groups/{{g._id}}">{{g.name}}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="panel-footer">
+    <a href="#">Show all</a>
+  </div>
+</div>

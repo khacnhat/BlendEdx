@@ -9,7 +9,7 @@
 
   function bldSidebar(){
     return{
-      templateUrl: 'js/components/slidebar/bld-sidebar.html',
+      templateUrl: 'js/directives/slidebar/bld-sidebar.html',
       controller: controllerFn,
       controllerAs: 'bldSidebarCtrl',
       link: linkFn,

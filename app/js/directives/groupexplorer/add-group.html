@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h3 class="modal-title">New group</h3>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal">
+    <input type="text" class="form-control" placeholder="Name of group" ng-model="group.name"/>
+    <textarea class="form-control" placeholder="Description of group (optional)" ng-model="group.description"></textarea>
+    <select class="form-control" ng-model="group.subject" ng-options="subject._id as subject.name for subject in subjects">
+      <option value="">-- Choice subject --</option>
+    </select>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="add()">Add</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

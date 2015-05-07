@@ -1,83 +1,151 @@
 /* app css stylesheet */
-ul, li{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+html {
+  font-family: "sans-serif"; }
 
-a{
-    text-decoration: none;
-}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+.form-control {
+  margin: 15px 0; }
+
 /* Sidebar */
-.sidebar{
-    z-index: 11;
-    background: #242628;
-    border-left: 1px solid #131415;
-    width: 200px;
-    right: 0px;
-    top:60px;
-    bottom: 0;
-    position: absolute;
-}
-
-.sidebar-toggle{
+.sidebar {
+  z-index: 11;
+  background: #242628;
+  border-left: 1px solid #131415;
+  width: 200px;
+  right: 0px;
+  top: 60px;
+  bottom: 0;
+  position: absolute; }
+  .sidebar .sidebar-toggle {
     display: block;
     cursor: pointer;
     opacity: 0.6;
     filter: alpha(opacity=60);
     width: 60px;
     height: 60px;
-    background-color: #FB5557;
-}
+    background-color: #FB5557; }
+    .sidebar .sidebar-toggle .toggle-icon {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: url("../images/sidebar-toggler.png") no-repeat center; }
+  .sidebar .chat-search {
+    padding: 10px; }
+  .sidebar .chat-buddy {
+    border-bottom: 1px solid #2e3033; }
+    .sidebar .chat-buddy > a {
+      display: block;
+      padding: 14px 0 14px 10px; }
+      .sidebar .chat-buddy > a .status {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        right: 10px;
+        margin-top: 14px;
+        z-index: 10;
+        border-radius: 50%; }
+      .sidebar .chat-buddy > a .status.online {
+        background: #8bbf61; }
+      .sidebar .chat-buddy > a .status.away {
+        background: #ab7a4b; }
+      .sidebar .chat-buddy > a .avatar {
+        width: 40px; }
+      .sidebar .chat-buddy > a .buddy-name {
+        color: #efefef; }
+      .sidebar .chat-buddy > a small {
+        color: #bcc3c1; }
 
-.toggle-icon{
+.panel {
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0; }
+
+.panel-green {
+  border: 1px solid #e2e9e6; }
+  .panel-green .panel-heading {
+    padding: 0;
+    background: #26a69a;
+    border-bottom: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0; }
+    .panel-green .panel-heading .media img {
+      width: 50px;
+      height: 50px; }
+    .panel-green .panel-heading .media .media-body a {
+      color: white; }
+  .panel-green .panel-heading.title {
+    font-size: 18px;
+    padding: 10px; }
+    .panel-green .panel-heading.title a {
+      margin-top: 5px;
+      color: #fff; }
+
+.panel-footer {
+  border-top: none;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px; }
+
+.list-group {
+  margin: 0; }
+  .list-group .list-group-item {
+    position: relative;
     display: block;
-    width: 100%;
-    height: 100%;
-    background: url("../images/sidebar-toggler.png") no-repeat center;
-}
-
-.chat-search{
-    padding: 10px;
-}
-
-.chat-buddy{
-    border-bottom: 1px solid #2e3033;
-}
-
-.chat-buddy>a{
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff; }
+  .list-group li .hex {
     display: block;
-    padding: 14px 0 14px 10px;
-}
+    width: 14px;
+    height: 14px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background: #336699;
+    margin: 3px 10px 0 0; }
+  .list-group .panel-body {
+    padding: 0; }
 
-.chat-buddy .status{
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    position: absolute;
-    right: 10px;
-    margin-top: 14px;
-    z-index: 10;
-    border-radius: 50%;
-}
+#postbox .postbox-body {
+  padding: 10px; }
+#postbox .note-attachment {
+  margin: 0; }
+#postbox .note-attachment a {
+  display: inline-block;
+  padding: 5px; }
 
-.chat-buddy .status.online{
-    background: #8bbf61;
-}
+.comment-bar {
+  padding: 3px 5px;
+  background: #f5f5f5;
+  font-weight: 500;
+  font-size: 12px;
+  color: #c2c2c2; }
 
-.chat-buddy .status.away{
-    background: #ab7a4b;
-}
+.comments {
+  border-top: 1px solid #e2e9e6; }
 
-.chat-buddy .avatar{
-    width: 40px;
-}
+.comment {
+  border-bottom: 1px solid #f5f5f5;
+  background: #fff;
+  padding: 5px; }
+  .comment .media-left img {
+    with: 50px;
+    height: 50px; }
 
-.chat-buddy .buddy-name{
-    color: #efefef;
-}
-
-.chat-buddy small{
-    color: #bcc3c1;
-}
-
+/*# sourceMappingURL=app.css.map */

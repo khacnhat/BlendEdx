@@ -1,0 +1,32 @@
+<tabset id="postbox" class="panel">
+  <tab>
+    <tab-heading>
+      <i class="fa fa-edit"></i> Note
+    </tab-heading>
+    <textarea class="form-control" ng-model="note.text"></textarea>
+    <input type="text" value="{{group.name}}"/>
+    <div class="row note-attachment">
+      <div class="note-attachment col-md-8 pull-left">
+        <a href class="fa fa-file" tooltip="File"></a>
+        <a href class="fa fa-link" tooltip="Link"></a>
+        <a href class="fa fa-book" tooltip="Library"></a>
+      </div>
+      <div class="col-md-2 pull-right">
+        <button class="btn btn-success" ng-click="postNote()">Send</button>
+      </div>
+    </div>
+  </tab>
+  <tab>
+    <tab-heading>
+      <i class="fa fa-question-circle"></i> Quiz
+    </tab-heading>
+    <button class="btn btn-success">Create a Quiz</button> or <a href="">Load from collection</a>
+
+  </tab>
+  <tab>
+    <tab-heading>
+      <i class="fa fa-bar-chart"></i> Poll
+    </tab-heading>
+    <input type="text" class="form-control" placeholder="Question..."/>
+  </tab>
+</tabset>
