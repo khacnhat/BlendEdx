@@ -4,7 +4,9 @@
 angular.module('BlendEdxApp', [
   'ngRoute',
   'ui.bootstrap',
-  'restangular'
+  'restangular',
+  'ngTagsInput',
+  'angularFileUpload'
 ])
   .config(['$routeProvider', 'RestangularProvider', '$httpProvider',
     function($routeProvider, RestangularProvider, $httpProvider) {
@@ -35,4 +37,13 @@ angular.module('BlendEdxApp', [
       }
     }
   }])
+  .factory('_', function(){
+    return window._;
+  })
+  .controller('BaseController', ['$scope', function($scope){
+    //Hide the overlay content
+    $scope.hideOverlay = function(){
+      angular.element('#overlay').css('display', 'none');
+    }
+  }]);
 ;

@@ -1,2 +1,6 @@
-<div postbox></div>
-<div feed></div>
+<postbox group="group" add-feed="addFeed" />
+<div>
+  <div ng-repeat="feed in feeds">
+    <postblock data="feed" group="group" remove-feed="removeFeed"></postblock>
+  </div>
+</div>

@@ -28,6 +28,36 @@ a:hover{
   margin: 15px 0;
 }
 
+#overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: none;
+  z-index: 1000;
+}
+#overlay .overlay-content {
+  width: 100%;
+  height: 100%;
+}
+
+#overlay .btn-close{
+  x-index: 1001;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  background-color: #009688;
+  font-size: 20pt;
+  vertical-align: middle;
+}
+
+#overlay .btn-close > a {
+  color: #ffffff;
+}
+
 /* Sidebar */
 .sidebar{
   z-index: 11;
@@ -184,11 +214,25 @@ a:hover{
 
   .note-attachment{
     margin: 0;
+    position: relative;
   }
 
   .note-attachment a{
     display: inline-block;
     padding: 5px;
+  }
+
+  .progress{
+    width: 100px;
+  }
+
+  .postbox-file-upload{
+    opacity: 0;
+    position: absolute;
+    left: 8px;
+    width: 25px;
+    z-index: 10;
+    overflow:hidden;
   }
 }
 
@@ -213,6 +257,15 @@ a:hover{
     img{
       with: 50px;
       height: 50px;
+    }
+  }
+}
+
+.attachments{
+  .media{
+    img{
+      width:50px;
+      height: auto;
     }
   }
 }
