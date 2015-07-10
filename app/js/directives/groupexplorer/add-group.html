@@ -1,16 +1,16 @@
 <div class="modal-header">
-  <h3 class="modal-title">New group</h3>
+  <h3 class="modal-title">{{'create.new.group' | translate}}</h3>
 </div>
 <div class="modal-body">
-  <form class="form-horizontal">
-    <input type="text" class="form-control" placeholder="Name of group" ng-model="group.name"/>
-    <textarea class="form-control" placeholder="Description of group (optional)" ng-model="group.description"></textarea>
-    <select class="form-control" ng-model="group.subject" ng-options="subject._id as subject.name for subject in subjects">
-      <option value="">-- Choice subject --</option>
+  <form class="form-horizontal" name="addGroupForm">
+    <input type="text" name="name" class="form-control" placeholder="{{'name.of.group' | translate}}" ng-model="group.name" required/>
+    <textarea name="description" class="form-control" placeholder="{{'description.of.group' | translate}}" ng-model="group.description" required></textarea>
+    <select name="subject" class="form-control" ng-model="group.subject" ng-options="subject._id as subject.name for subject in subjects" required>
+      <option value="">-- {{'choose.subject' | translate}} --</option>
     </select>
   </form>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" ng-click="add()">Add</button>
-  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-primary" ng-click="add()" ng-disabled="addGroupForm.name.$invalid || addGroupForm.description.$invalid || !addGroupForm.subject.$dirty || addGroupForm.subject.$invalid ">{{'add' | translate}}</button>
+  <button class="btn btn-warning" ng-click="cancel()">{{'cancel' | translate}}</button>
 </div>

@@ -1,0 +1,65 @@
+<div class="profile">
+  <div class="cover-wrapper">
+    <div class="cover">
+      <img src="images/default-background.jpg"/>
+    </div>
+    <div class="avatar">
+      <img ng-src="{{profile.avatar?BaseUrl + '/public/users/110x110/' + profile.avatar: 'images/default-user.png'}}">
+    </div>
+    <div class="profile-name">
+      <a>{{profile.name}}</a>
+    </div>
+    <div class="profile-links">
+      <div class="pull-right">
+        <form>
+          <input type="file" nv-file-select uploader="uploader" />
+          <a class="btn" ng-click="">
+            <i class="fa fa-upload"></i>
+            change
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading panel-heading-gray">
+      <a href="#" class="btn btn-white btn-xs pull-right btn-edit"><i class="fa fa-pencil"></i></a>
+      <i class="fa fa-fw fa-info-circle"></i>
+      <span>About</span>
+    </div>
+    <div class="panel-body">
+      <ul class="list-unstyled">
+        <li>
+          <div class="row">
+            <div class="col-sm-4"><span class="text-muted">Date of Birth</span></div>
+            <div class="col-sm-8">12 January 1990</div>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <div class="col-sm-4"><span class="text-muted">Job</span></div>
+            <div class="col-sm-8">Specialist</div>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <div class="col-sm-4"><span class="text-muted">Gender</span></div>
+            <div class="col-sm-8">Male</div>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <div class="col-sm-4"><span class="text-muted">Lives in</span></div>
+            <div class="col-sm-8">Miami, FL, USA</div>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <div class="col-sm-4"><span class="text-muted">Credits</span></div>
+            <div class="col-sm-8">249</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

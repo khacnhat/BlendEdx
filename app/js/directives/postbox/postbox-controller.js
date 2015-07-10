@@ -6,7 +6,7 @@
 (function(){
   angular
     .module('BlendEdxApp')
-    .directive('postbox', ['announcementService', 'groupService', 'FileUploader', '$q', postbox]);
+    .directive('postbox', ['announcementService', 'groupService', 'FileUploader', '$q', 'localStorageService', postbox]);
 
   function postbox(){
     return {
@@ -19,20 +19,18 @@
       }
     }
 
-    function controllerFn($scope, announcementService, groupService, FileUploader, $q){
-      $scope.note = {text: '', attachments: []};
+    function controllerFn($scope, announcementService, groupService, FileUploader, $q, localStorageService){
+      $scope.note = {text: '', attachments: [], groups: []};
 
       /**
        * Create new note
        */
       $scope.postNote = function(){
-        $scope.note.groups = [];
-        $scope.groupTags.forEach(function(g){
-          $scope.note.groups.push({_id: g._id, name: g.text});
-        });
         announcementService.post($scope.note).then(function(data){
           $scope.addFeed(data);
-          $scope.note = {};
+          $scope.note.text = "";
+          $scope.note.attachments = [];
+          $scope.uploader.clearQueue();
           toastr.success("Announcement posted successfully", "Success");
         },function(){
           toastr.error("Error", "Posting annoucement failed");
@@ -47,12 +45,7 @@
         var deferred = $q.defer();
         groupService.getList({name: query}).then(function(groups){
           var tags = [];
-          if(groups && groups.length > 0) {
-            groups.forEach(function (g) {
-              tags.push({_id: g._id, text: g.name});
-            });
-          }
-          deferred.resolve(tags);
+          deferred.resolve(groups);
         });
         return deferred.promise;
       };
@@ -60,6 +53,7 @@
       $scope.uploader = new FileUploader({
         autoUpload: true,
         url: 'http://localhost:9000/files',
+        headers: {'x-access-token': localStorageService.get('token')},
         onSuccessItem: function(item, response, status, headers){
           $scope.note.attachments.push(response);
         },
@@ -73,7 +67,7 @@
     function linkFn(scope, element, attrs){
       scope.$watch(attrs.group, function(g){
         if(g)
-          scope.groupTags = [{_id: g._id, text: g.name}];
+          scope.note.groups = [g];
       });
     }
   }

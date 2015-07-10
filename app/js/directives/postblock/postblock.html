@@ -2,14 +2,24 @@
   <div class="panel-heading">
     <div class="media">
       <div class="media-left">
-        <a href>
-          <img ng-src="{{feed.author.avatar}}"/>
+        <a ui-sref="profile({profileId: feed.author._id})">
+          <img ng-src="{{feed.author.avatar?BaseUrl + '/public/users/50x50/' + feed.author.avatar: 'images/default-user-50x50.png'}}"/>
         </a>
       </div>
       <div class="media-body">
-        <a class="pull-right" ng-click="delete()"><i class="fa fa-arrow-circle-down"></i></a>
-        <div><a href>{{feed.author.name}}</a> to <a href>{{group.name}}</a></div>
-        <div><span>on {{feed.created}}</span></div>
+        <div class="pull-right post-control">
+          <span class="dropdown" dropdown on-toggle="toggled(open)">
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a class="post-action" ng-click="delete()">Delete</a></li>
+              <li><a class="post-action" ng-click="edit()">Edit</a></li>
+            </ul>
+          </span>
+        </div>
+        <div><a ui-sref="profile({profileId: feed.author._id})">{{feed.author.name}}</a> {{'to' | translate}} <a ng-repeat="group in feed.groups" href="#/groups/{{group._id}}">{{group.name}} </a></div>
+        <div><span am-time-ago="feed.created"></span></div>
       </div>
     </div>
   </div>
@@ -19,13 +29,13 @@
   <div class="attachments">
     <ul>
       <li ng-repeat="attachment in feed.attachments" class="media">
-        <div class="media-left"><img src="images/file-thumbnail.png"/></div>
+        <div class="media-left"><a ng-click="preview(attachment)" class="fa {{fileThumbnail(attachment.extension)}} attachment-icon"></a></div>
         <div class="media-body">
           <div>{{attachment.name}}</div>
           <div><span>{{attachment.extension}}</span> <span>Size: {{attachment.size}}</span></div>
           <div>
-            <a class="fa fa-eye" ng-click="preview(attachment)"></a>
-            <a class="fa fa-download"></a>
+            <a class="fa fa-eye" ng-click="preview(attachment)" tooltip="Preview"></a>
+            <a class="fa fa-download" tooltip="Download"></a>
           </div>
         </div>
       </li>
@@ -33,21 +43,22 @@
   </div>
   <div class="comment-bar">
     <i class="fa fa-comments"></i>
-    <a href ng-click="showComments()">{{feed.comments.length}} comments</a>
+    <a href ng-click="showComments()">{{feed.comments.length}} {{'comments' | translate}}</a>
   </div>
   <ul class="comments">
     <li ng-repeat="comment in feed.comments" class="media comment" ng-hide="!showAllComment && $index >= 3">
       <div class="media-left">
-        <a href><img ng-src="{{comment.author.avatar}}"/></a>
+        <a ui-sref="profile({profileId: comment.author._id})"><img ng-src="{{comment.author.avatar?BaseUrl + '/public/users/50x50/' + comment.author.avatar: 'images/default-user.png'}}"/></a>
       </div>
       <div class="media-body">
-        <a href class="pull-left">{{comment.author.name}}</a>
-        <span> {{comment.text}}</span>
-        <div>on {{comment.created}}</div>
+        <a ui-sref="profile({profileId: comment.author._id})" class="pull-left">{{comment.author.name}} </a> &nbsp; <span am-time-ago="comment.created"></span>
+        <div> {{comment.text}}</div>
       </div>
     </li>
   </ul>
   <div class="panel-footer">
-    <input type="text" class="form-control" ng-keypress="sendComment($event)" ng-model="comment.text"/>
+    <md-input-container>
+      <input ng-model="comment.text" ng-keypress="sendComment($event)" aria-label="Comment">
+    </md-input-container>
   </div>
 </div>

@@ -1,3 +1,12 @@
-<div>
-  <div feed></div>
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-7">
+    <postbox add-feed="addFeed" />
+    <div infinite-scroll="nextFeedPage()" infinite-scroll-distance="1" infinite-scroll-disabled="isPagingBusy">
+      <div ng-repeat="feed in feeds">
+        <postblock data="feed" group="group" remove-feed="removeFeed"></postblock>
+      </div>
+    </div>
+  </div>
 </div>

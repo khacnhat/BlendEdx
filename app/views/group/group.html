@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        <h4>Settings</h4>
+      </div>
+      <div class="panel-body">
+        <group-code group="group"/>
+      </div>
+    </div>
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        <h4>Content</h4>
+      </div>
+      <ul class="panel-body">
+        <li><a href="#/groups/{{group._id}}/posts">{{'announcements' | translate}}</a></li>
+        <li><a href="#/groups/{{group._id}}/members">{{'members' | translate}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="group-cover">
+          <div class="group-info">
+            <h4 class="bold">{{group.name}}</h4>
+          </div>
+          <ul class="group-toolbar">
+            <li><a ui-sref="groups.posts({groupId: group._id})" ui-sref-active="active">{{'announcements' | translate}}</a></li>
+            <li><a ui-sref="groups.members({groupId: group._id})" ui-sref-active="active">{{'members' | translate}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
+</div>

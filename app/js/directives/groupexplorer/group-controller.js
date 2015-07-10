@@ -10,13 +10,10 @@
   function groupExplorer(){
     return {
       templateUrl: 'js/directives/groupexplorer/group-explorer.html',
-      controller: controllerFn,
-      controllerAs: 'groupExplorerCtrl',
-      link: linkFn,
-      bindToController: true
+      controller: controllerFn
     };
 
-    function controllerFn($scope, $modal, Restangular, groupService){
+    function controllerFn($scope, $modal, $location, Restangular, groupService){
       $scope.add = function(size){
         var modalInstance = $modal.open({
           templateUrl: 'js/directives/groupexplorer/add-group.html',
@@ -26,18 +23,30 @@
       }
 
       $scope.groups = groupService.getList().$object;
-    }
 
-    function linkFn($scope, $element, $attrs){
+      var unbindRefreshGroup = $scope.$on('refreshGroups', function(){
+        $scope.groups = groupService.getList().$object;
+      });
 
+      $scope.$on('$destroy', unbindRefreshGroup);
+
+      $scope.join = function(){
+        groupService.one('join').customPOST({code: $scope.groupCode})
+          .then(function(response){
+            $location.path('/groups/' + response.groupId);
+          })
+          .catch(function(response){
+            toastr.error(response.data.message, 'Error');
+          });
+      };
     }
   }
 
   angular
     .module('BlendEdxApp')
-    .controller('AddGroupCtrl', ['$scope', '$location', '$modalInstance', 'Restangular', 'subjectService', 'groupService', addGroup]);
+    .controller('AddGroupCtrl', ['$scope', '$rootScope', '$state', '$modalInstance', 'Restangular', 'subjectService', 'groupService', addGroup]);
 
-  function addGroup($scope, $location, $modalInstance, Restangular, subjectService, groupService){
+  function addGroup($scope, $rootScope, $state, $modalInstance, Restangular, subjectService, groupService){
     $scope.group = {name: "", description: "", subject: {id: "", name: ""}};
 
     $scope.subjects =  subjectService.getList().$object;
@@ -45,7 +54,8 @@
     $scope.add = function(){
       groupService.post($scope.group)
         .then(function(result){
-          $location.path('/groups/' + result._id);
+          $rootScope.$broadcast('refreshGroups');
+          $state.go('groups.posts', {groupId: result._id});
           toastr.success("New group created successfully", "Success");
           $modalInstance.close('added');
         }, function(){

@@ -1,19 +1,21 @@
-<div class="panel panel-green list-group">
-  <div class="panel-heading panel-heading-gray title">
-    <span>Group</span>
-    <a href class="fa fa-plus pull-right" ng-click="add()"></a>
+<div>
+  <div class="sidebar-title">
+    <span>{{'groups' | translate}}</span>
+    <a href class="fa fa-plus pull-right" ng-click="add()" ng-if="user.role === 'teacher'"></a>
   </div>
-  <div class="panel-body">
+  <div>
+    <form ng-show="user.role === 'student'">
+      <span>Enter a group code to join</span>
+      <input ng-model="groupCode"/>
+      <button ng-click="join()">Join</button>
+    </form>
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat="g in groups">
+      <li class="list-group-item" ng-repeat="g in groups ">
         <div>
           <span class="hex pull-left"></span>
-          <a href="#/groups/{{g._id}}">{{g.name}}</a>
+          <a ui-sref="groups.posts({groupId:g._id})">{{g.name}}</a>
         </div>
       </li>
     </ul>
-  </div>
-  <div class="panel-footer">
-    <a href="#">Show all</a>
   </div>
 </div>

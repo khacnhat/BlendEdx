@@ -1,0 +1,13 @@
+<ul class="group-members">
+  <li ng-repeat="m in members" class="member">
+    <div class="media">
+      <div class="media-left">
+        <a href="#/profiles/{{m._id}}"><img ng-src="{{m.avatar?BaseUrl + '/public/users/50x50/' + m.avatar: 'images/default-user-50x50.png'}}" class="img-circle" /></a>
+      </div>
+      <div class="media-body">
+        <a href="#/profiles/{{m._id}}"><h4>{{m.name}}</h4></a>
+        <span>{{m.role}}</span>
+      </div>
+    </div>
+  </li>
+</ul>

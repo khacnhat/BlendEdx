@@ -1,5 +1,5 @@
 <postbox group="group" add-feed="addFeed" />
-<div>
+<div infinite-scroll="nextFeedPage()" infinite-scroll-distance="1" infinite-scroll-disabled="isPagingBusy">
   <div ng-repeat="feed in feeds">
     <postblock data="feed" group="group" remove-feed="removeFeed"></postblock>
   </div>

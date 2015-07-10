@@ -10,6 +10,11 @@ body{
   font-family: $font;
 }
 
+h1,h2,h3,h4,h5{
+  margin: 0;
+  padding: 5px;
+}
+
 ul, li{
   margin: 0;
   padding: 0;
@@ -30,11 +35,13 @@ a:hover{
 
 #overlay{
   position: fixed;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #ffffff;
   display: none;
-  z-index: 1000;
+  z-index: 2000;
 }
 #overlay .overlay-content {
   width: 100%;
@@ -46,8 +53,8 @@ a:hover{
   width: 50px;
   height: 50px;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2px;
+  right: 2px;
   text-align: center;
   background-color: #009688;
   font-size: 20pt;
@@ -58,16 +65,25 @@ a:hover{
   color: #ffffff;
 }
 
+.bld-content{
+  margin-top: 80px;
+  margin-left: 80px;
+}
+
 /* Sidebar */
 .sidebar{
-  z-index: 11;
+  z-index: 1031;
   background: #242628;
-  border-left: 1px solid #131415;
-  width: 200px;
-  right: 0px;
+  border-right: 1px solid #131415;
+  width: 260px;
+  left: -200px;
   top:60px;
   bottom: 0;
-  position: absolute;
+  position: fixed;
+
+  span{
+    color: #ffffff;
+  }
 
   .sidebar-toggle{
     display: block;
@@ -137,6 +153,14 @@ a:hover{
   -moz-border-radius: 0;
   border-radius: 0;
 }
+.panel.panel-default{
+  border: 1px solid #e2e9e6;
+
+  .panel-heading{
+    background-color: #fff;
+    border-bottom: 1px solid #e2e9e6;
+  }
+}
 
 .panel-green {
   border: 1px solid #e2e9e6;
@@ -150,13 +174,22 @@ a:hover{
     border-radius: 0;
 
     .media{
+      overflow: visible;
       img{
         width: 50px;
         height: 50px;
       }
       .media-body{
+        overflow: visible;
         a {
           color: white;
+        }
+        .post-control {
+          margin: 15px;
+
+          a.post-action{
+            color: #000;
+          }
         }
       }
     }
@@ -181,15 +214,27 @@ a:hover{
   border-bottom-left-radius: 3px;
 }
 
+.sidebar-title{
+  color: #ffffff;
+  font-weight: bold;
+  margin: 5px 10px;
+  padding: 5px;
+}
+
 .list-group {
   margin: 0;
 
   .list-group-item{
     position: relative;
     display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
-    background-color: #fff;
+    margin-bottom: 10px;
+
+    a {
+      color: #ffffff;
+      display: block;
+      width: 100%;
+      height: 30px;
+    }
   }
 
   li .hex {
@@ -201,10 +246,6 @@ a:hover{
     background: #336699;
     margin: 3px 10px 0 0;
   }
-
-  .panel-body{
-    padding: 0;
-  }
 }
 
 #postbox{
@@ -212,14 +253,32 @@ a:hover{
     padding: 10px;
   }
 
+  textarea{
+    resize: none;
+    padding: 0 10px 10px 10px;
+    margin: 0 10px;
+    width: calc(100% - 20px);
+  }
+
+  tags-input .tags{
+    border: none;
+    box-shadow: none;
+    padding: 0 10px;
+  }
+
   .note-attachment{
-    margin: 0;
+    margin: 0 10px;
     position: relative;
+    height: 55px;
   }
 
   .note-attachment a{
     display: inline-block;
     padding: 5px;
+  }
+
+  .attachment-buttons{
+    margin-top: 15px;
   }
 
   .progress{
@@ -233,6 +292,7 @@ a:hover{
     width: 25px;
     z-index: 10;
     overflow:hidden;
+    margin: 15px 0 0 10px;
   }
 }
 
@@ -262,10 +322,100 @@ a:hover{
 }
 
 .attachments{
+  ul{
+    margin: 10px;
+  }
   .media{
-    img{
-      width:50px;
-      height: auto;
+    .attachment-icon{
+      font-size: 30pt;
     }
   }
+}
+
+.profile{
+
+  .cover-wrapper{
+    position: relative;
+    height: 190px;
+  }
+
+  .cover{
+    height: 135px;
+    overflow: hidden;
+  }
+
+  .cover img{
+    width: 100%;
+    height: auto;
+  }
+
+  .avatar{
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+  }
+  .avatar img{
+    width: 110px;
+    height: 110px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 3px solid #fff;
+  }
+
+  .profile-name{
+    position: absolute;
+    left: 140px;
+    bottom: 60px;
+  }
+
+  .profile-name a{
+    font-size: 16pt;
+    color:#fff;
+    font-weight: bold;
+  }
+
+  .btn-edit{
+    margin: 0;
+  }
+}
+
+.switch-label{
+  margin-top: 15px;
+}
+
+.group-members{
+  .member{
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: solid 1px #ccc;
+  }
+}
+
+.group-cover{
+  border: 1px solid #e2e9e6;
+  margin-bottom: 20px;
+}
+
+.group-info{
+  background-color: #26a69a;
+  color: #ffffff;
+  padding: 10px 0;
+}
+
+.group-toolbar{
+  padding: 0 5px;
+}
+
+.group-toolbar > li{
+  display: inline-block;
+}
+
+.group-toolbar > li > a{
+  display: block;
+  padding: 5px 15px;
+}
+
+.group-toolbar > li > a.active{
+  border-bottom: 4px solid #26a69a;
 }
