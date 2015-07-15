@@ -1,0 +1,20 @@
+.top-bar{
+  background-color: #009688;
+}
+
+.content{
+  margin-top: 80px;
+}
+
+.features .row{
+  margin-bottom: 10px;
+}
+
+.features img{
+  width: 100%;
+  height: auto;
+}
+
+.footer{
+  margin-top: 100px;
+}
